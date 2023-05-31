@@ -4,10 +4,17 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.ActionMenuItem;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
@@ -17,6 +24,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class Bai2 extends AppCompatActivity {
+    ListStudentAdapter listStudentAdapter;
+    SearchView searchView;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +36,18 @@ public class Bai2 extends AppCompatActivity {
         ListView lv_student = findViewById(R.id.lv_student);
         Button btn_add = findViewById(R.id.btn_add);
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         ArrayList<Student> list = new ArrayList<>();
         list.add(new Student("Hà Nội", "Phạm Minh", "Vĩnh Phúc"));
         list.add(new Student("Đà Nẵng", "Quốc Anh", "Vĩnh Phúc"));
         list.add(new Student("Tây Nguyên", "Văn Quân", "Hà Nội"));
         list.add(new Student("Cần Thơ", " Phạm Linh", "Cần Thơ"));
 
-        ListStudentAdapter listStudentAdapter = new ListStudentAdapter(this, list);
+        listStudentAdapter = new ListStudentAdapter(this, list);
 
         lv_student.setAdapter(listStudentAdapter);
 
@@ -59,5 +74,46 @@ public class Bai2 extends AppCompatActivity {
                 getData.launch(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.search);
+        searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                listStudentAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                listStudentAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.dx) {
+            Intent intent = new Intent(this, DangNhap.class);
+            startActivity(intent);
+            finish();
+        } else if (item.getItemId() == R.id.item_add) {
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

@@ -2,23 +2,29 @@ package com.minhpt.lab5_ph32719;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class ListStudentAdapter extends BaseAdapter {
-    private final Context context;
-    private final ArrayList<Student> list;
+public class ListStudentAdapter extends BaseAdapter implements Filterable {
+    private Context context;
+    private ArrayList<Student> list, listOld;
 
     public ListStudentAdapter(Context context, ArrayList<Student> list) {
         this.context = context;
         this.list = list;
+        this.listOld = list;
     }
 
     @Override
@@ -63,7 +69,36 @@ public class ListStudentAdapter extends BaseAdapter {
             public void onClick(View v) {
             }
         });
-
         return convertView;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String s = constraint.toString();
+                if (s.isEmpty()) {
+                    list = listOld;
+                } else {
+                    ArrayList<Student> listS = new ArrayList<>();
+                    for (Student st : listOld) {
+                        if (st.getName().toLowerCase().contains(s.toLowerCase())){
+                            listS.add(st);
+                        }
+                    }
+                    list = listS;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = list;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                list = (ArrayList<Student>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }

@@ -51,9 +51,8 @@ public class DangNhap extends AppCompatActivity {
                 } else if (!name.equals(username) && !pass.equals(password)) {
                     Toast.makeText(DangNhap.this, "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
                 } else {
+                    startActivity(new Intent(DangNhap.this, Bai2.class));
                     Toast.makeText(DangNhap.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(DangNhap.this, Bai2.class);
-                    startActivity(intent);
                 }
             }
         });

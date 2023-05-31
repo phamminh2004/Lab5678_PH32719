@@ -51,9 +51,11 @@ public class Bai1 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();
+
                 bundle.putString("name", edt_name.getText().toString());
                 bundle.putString("address", edt_diachi.getText().toString());
                 bundle.putString("branch", selectedItemSpinner);
+
                 intent.putExtras(bundle);
                 setResult(1, intent);
                 finish();

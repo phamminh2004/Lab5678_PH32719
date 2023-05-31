@@ -6,16 +6,19 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".Bai1">
+
+    <include layout="@layout/tool_bar" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/edt"
-        android:text="  DANH SÁCH SINH VIÊN  "
+        android:text="DANH SÁCH SINH VIÊN"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"/>
 
     <Button
         android:id="@+id/btn_add"
@@ -23,7 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginTop="10dp"
-        android:text="THÊM MỚI" />
+        android:text="THÊM MỚI"
+        android:layout_marginRight="10dp"/>
 
     <ListView
         android:id="@+id/lv_student"
