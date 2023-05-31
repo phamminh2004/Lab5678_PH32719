@@ -22,7 +22,7 @@ public class Bai1 extends AppCompatActivity {
         setContentView(R.layout.activity_bai1);
 
         EditText edt_name = findViewById(R.id.edt_name);
-        EditText edt_diachi = findViewById(R.id.edt_name);
+        EditText edt_diachi = findViewById(R.id.edt_diachi);
         Spinner spn_chool = findViewById(R.id.spn_school);
         Button btn_submit = findViewById(R.id.btn_submit);
 
@@ -55,11 +55,9 @@ public class Bai1 extends AppCompatActivity {
                 bundle.putString("address", edt_diachi.getText().toString());
                 bundle.putString("branch", selectedItemSpinner);
                 intent.putExtras(bundle);
-                setResult(2,intent);
+                setResult(1, intent);
                 finish();
             }
         });
     }
-
-
 }

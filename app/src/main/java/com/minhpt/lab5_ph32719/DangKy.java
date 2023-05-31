@@ -17,11 +17,11 @@ public class DangKy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
+
         EditText edtname_signup = findViewById(R.id.edtname_signup);
         EditText edtpass_singup = findViewById(R.id.edtpass_Signup);
         EditText edtnhaplai = findViewById(R.id.edtnhaplai_signup);
         Button btndangky = findViewById(R.id.btndangky_signup);
-
 
         btndangky.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,13 +30,13 @@ public class DangKy extends AppCompatActivity {
                 String password = edtpass_singup.getText().toString();
                 String nhaplai = edtnhaplai.getText().toString();
                 if (username.trim().isEmpty()) {
-                    Toast.makeText(DangKy.this, "Vui long nhap username", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DangKy.this, "Vui lòng nhập tài khoản", Toast.LENGTH_SHORT).show();
                 } else if (password.trim().isEmpty()) {
-                    Toast.makeText(DangKy.this, "Vui long nhap password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DangKy.this, "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
                 } else if (nhaplai.trim().isEmpty()) {
-                    Toast.makeText(DangKy.this, "Vui long nhap lai password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DangKy.this, "Vui lòng nhập lại mật khẩu", Toast.LENGTH_SHORT).show();
                 } else if (!nhaplai.equals(password)) {
-                    Toast.makeText(DangKy.this, "Password nhap lai khong khop", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DangKy.this, "Mật khẩu nhập lại sai", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(DangKy.this, DangNhap.class);
                     Bundle bundle = new Bundle();

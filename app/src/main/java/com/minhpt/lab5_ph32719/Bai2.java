@@ -40,7 +40,7 @@ public class Bai2 extends AppCompatActivity {
                 new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == 2) {
+                        if (result.getResultCode() == 1) {
                             Intent intent = result.getData();
                             Bundle bundle = intent.getExtras();
                             String name = bundle.getString("name");
