@@ -10,16 +10,23 @@ import androidx.appcompat.view.menu.ActionMenuItem;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Filterable;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -58,32 +65,14 @@ public class Bai2 extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-//      ArrayList<Student> list = new ArrayList<>();
         list.add(new Student("Hà Nội", "Phạm Minh", "Vĩnh Phúc"));
         list.add(new Student("Đà Nẵng", "Quốc Anh", "Vĩnh Phúc"));
         list.add(new Student("Tây Nguyên", "Văn Quân", "Hà Nội"));
         list.add(new Student("Cần Thơ", " Phạm Linh", "Cần Thơ"));
 
         listStudentAdapter = new ListStudentAdapter(this, list);
-
         lv_student.setAdapter(listStudentAdapter);
 
-//        ActivityResultLauncher<Intent> getData = registerForActivityResult(
-//                new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-//                    @Override
-//                    public void onActivityResult(ActivityResult result) {
-//                        if (result.getResultCode() == 1) {
-//                            Intent intent = result.getData();
-//                            Bundle bundle = intent.getExtras();
-//                            String name = bundle.getString("name");
-//                            String address = bundle.getString("address");
-//                            String branch = bundle.getString("branch");
-//                            list.add(new Student(branch, name, address));
-//                            listStudentAdapter.notifyDataSetChanged();
-//                        }
-//                    }
-//                }
-//        );
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,7 +114,6 @@ public class Bai2 extends AppCompatActivity {
             Intent intent = new Intent(Bai2.this, Bai1.class);
             getData.launch(intent);
         }
-
         return super.onOptionsItemSelected(item);
     }
 

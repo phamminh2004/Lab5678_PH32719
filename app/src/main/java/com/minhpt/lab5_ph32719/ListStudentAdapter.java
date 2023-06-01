@@ -83,7 +83,7 @@ public class ListStudentAdapter extends BaseAdapter implements Filterable {
                 } else {
                     ArrayList<Student> listS = new ArrayList<>();
                     for (Student st : listOld) {
-                        if (st.getName().toLowerCase().contains(s.toLowerCase())){
+                        if (st.getName().toLowerCase().contains(s.toLowerCase())) {
                             listS.add(st);
                         }
                     }

@@ -43,7 +43,6 @@ public class Bai1 extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
         btn_submit.setOnClickListener(new View.OnClickListener() {
