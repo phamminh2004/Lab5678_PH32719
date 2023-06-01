@@ -27,6 +27,23 @@ public class Bai2 extends AppCompatActivity {
     ListStudentAdapter listStudentAdapter;
     SearchView searchView;
     Toolbar toolbar;
+    ArrayList<Student> list = new ArrayList<>();
+    ActivityResultLauncher<Intent> getData = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == 1) {
+                        Intent intent = result.getData();
+                        Bundle bundle = intent.getExtras();
+                        String name = bundle.getString("name");
+                        String address = bundle.getString("address");
+                        String branch = bundle.getString("branch");
+                        list.add(new Student(branch, name, address));
+                        listStudentAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +58,7 @@ public class Bai2 extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        ArrayList<Student> list = new ArrayList<>();
+//      ArrayList<Student> list = new ArrayList<>();
         list.add(new Student("Hà Nội", "Phạm Minh", "Vĩnh Phúc"));
         list.add(new Student("Đà Nẵng", "Quốc Anh", "Vĩnh Phúc"));
         list.add(new Student("Tây Nguyên", "Văn Quân", "Hà Nội"));
@@ -51,22 +68,22 @@ public class Bai2 extends AppCompatActivity {
 
         lv_student.setAdapter(listStudentAdapter);
 
-        ActivityResultLauncher<Intent> getData = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == 1) {
-                            Intent intent = result.getData();
-                            Bundle bundle = intent.getExtras();
-                            String name = bundle.getString("name");
-                            String address = bundle.getString("address");
-                            String branch = bundle.getString("branch");
-                            list.add(new Student(branch, name, address));
-                            listStudentAdapter.notifyDataSetChanged();
-                        }
-                    }
-                }
-        );
+//        ActivityResultLauncher<Intent> getData = registerForActivityResult(
+//                new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+//                    @Override
+//                    public void onActivityResult(ActivityResult result) {
+//                        if (result.getResultCode() == 1) {
+//                            Intent intent = result.getData();
+//                            Bundle bundle = intent.getExtras();
+//                            String name = bundle.getString("name");
+//                            String address = bundle.getString("address");
+//                            String branch = bundle.getString("branch");
+//                            list.add(new Student(branch, name, address));
+//                            listStudentAdapter.notifyDataSetChanged();
+//                        }
+//                    }
+//                }
+//        );
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +122,8 @@ public class Bai2 extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else if (item.getItemId() == R.id.item_add) {
-
+            Intent intent = new Intent(Bai2.this, Bai1.class);
+            getData.launch(intent);
         }
 
         return super.onOptionsItemSelected(item);
