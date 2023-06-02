@@ -82,6 +82,37 @@ public class Bai2 extends AppCompatActivity {
         });
     }
 
+    public static final String KEY_SV_MODEL = "sv_model";
+
+    ActivityResultLauncher<Intent> updateData = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == 1) {
+                        Intent intent = result.getData();
+                        Bundle bundle = intent.getExtras();
+                        String name = bundle.getString("name");
+                        String address = bundle.getString("address");
+                        String branch = bundle.getString("branch");
+
+                        svModel.name = name;
+                        svModel.address = address;
+                        svModel.branch = branch;
+
+                        listStudentAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+    );
+    private Student svModel;
+
+    public void updateSV(int position) {
+        Intent intent = new Intent(Bai2.this, Bai1.class);
+        svModel = list.get(position);
+        intent.putExtra(KEY_SV_MODEL, svModel);
+        updateData.launch(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();

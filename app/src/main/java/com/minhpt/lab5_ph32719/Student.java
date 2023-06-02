@@ -1,29 +1,13 @@
 package com.minhpt.lab5_ph32719;
 
-public class Student {
-    private String branch;
-    private String name;
-    private String address;
+import java.io.Serializable;
 
-    public String getBranch() {
-        return branch;
-    }
+public class Student implements Serializable {
+    public String branch;
 
-    public void setBranch(String branch) {
-        this.branch = branch;
-    }
+    public String name;
+    public String address;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
 
     public void setAddress(String address) {
         this.address = address;

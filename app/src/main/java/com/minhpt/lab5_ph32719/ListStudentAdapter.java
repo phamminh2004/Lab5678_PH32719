@@ -53,9 +53,9 @@ public class ListStudentAdapter extends BaseAdapter implements Filterable {
         Button btn_delete = convertView.findViewById(R.id.btn_delete);
         Button btn_update = convertView.findViewById(R.id.btn_update);
 
-        branch.setText("Fpoly " + list.get(position).getBranch());
-        name.setText("Họ tên: " + list.get(position).getName());
-        address.setText("Địa chỉ: " + list.get(position).getAddress());
+        branch.setText("Fpoly " + list.get(position).branch);
+        name.setText("Họ tên: " + list.get(position).name);
+        address.setText("Địa chỉ: " + list.get(position).address);
 
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +67,7 @@ public class ListStudentAdapter extends BaseAdapter implements Filterable {
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((Bai2) context).updateSV(position);
             }
         });
         return convertView;
@@ -83,7 +84,7 @@ public class ListStudentAdapter extends BaseAdapter implements Filterable {
                 } else {
                     ArrayList<Student> listS = new ArrayList<>();
                     for (Student st : listOld) {
-                        if (st.getName().toLowerCase().contains(s.toLowerCase())) {
+                        if (st.name.toLowerCase().contains(s.toLowerCase())) {
                             listS.add(st);
                         }
                     }
