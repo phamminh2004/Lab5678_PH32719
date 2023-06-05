@@ -33,17 +33,16 @@ public class Bai1 extends AppCompatActivity {
         list.add(new School(R.mipmap.hcm, "Hồ Chí Minh"));
         list.add(new School(R.mipmap.cantho, "Cần Thơ"));
 
+
         Student svModel = (Student) getIntent().getSerializableExtra(Bai2.KEY_SV_MODEL);
 
         SchoolSpinnerAdapter schoolSpinnerAdapter = new SchoolSpinnerAdapter(this, list);
         spn_chool.setAdapter(schoolSpinnerAdapter);
 
-        // Update sinh viên
         if (svModel != null) {
             edt_name.setText(svModel.name);
             edt_diachi.setText(svModel.address);
-            int position = list.indexOf(svModel.branch);
-            spn_chool.setSelection(position);
+            spn_chool.setSelection(list.indexOf(svModel.branch));
         }
         spn_chool.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
