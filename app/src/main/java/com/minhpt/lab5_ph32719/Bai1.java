@@ -42,7 +42,14 @@ public class Bai1 extends AppCompatActivity {
         if (svModel != null) {
             edt_name.setText(svModel.name);
             edt_diachi.setText(svModel.address);
-            spn_chool.setSelection(list.indexOf(svModel.branch));
+            int position = -1;
+            for (School x : list) {
+                if (svModel.branch.equals(x.getName())) {
+                    position = list.indexOf(x);
+                    break;
+                }
+            }
+            spn_chool.setSelection(position);
         }
         spn_chool.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
