@@ -40,9 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="@drawable/gradient"
             android:text="FAST"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
 
         <Button
             android:id="@+id/medium"
@@ -50,10 +52,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="@drawable/gradient"
             android:text="MEDIUM"
             android:textColor="@color/white"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
 
         <Button
             android:id="@+id/slow"
@@ -61,21 +65,24 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="@drawable/gradient"
             android:text="SLOW"
             android:textColor="@color/white"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
     </LinearLayout>
 
     <Button
         android:id="@+id/off"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:backgroundTintMode="add"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/gradient"
         android:text="OFF"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
 
 </LinearLayout>
