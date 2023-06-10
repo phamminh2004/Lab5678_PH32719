@@ -33,9 +33,9 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/edtname_signin"
+                android:id="@+id/edt_username"
                 android:layout_width="match_parent"
-                android:background="@drawable/background"
+                android:background="@drawable/edt"
                 android:padding="10dp" />
         </TableRow>
 
@@ -46,16 +46,26 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/edtpass_signin"
+                android:id="@+id/edt_password"
                 android:layout_width="match_parent"
-                android:background="@drawable/background"
+                android:background="@drawable/edt"
                 android:inputType="textPassword"
                 android:padding="10dp" />
         </TableRow>
     </TableLayout>
 
+    <CheckBox
+        android:id="@+id/chk_remember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="10dp"
+        android:text="Remember me"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <Button
-        android:id="@+id/btndangnhap"
+        android:id="@+id/btn_dangnhap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -65,7 +75,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btndangky"
+        android:id="@+id/btn_dangky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#2196F3"

@@ -25,11 +25,11 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edtname_signup"
+        android:id="@+id/edt_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/background"
+        android:background="@drawable/edt"
         android:padding="5dp" />
 
     <TextView
@@ -39,11 +39,11 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edtpass_Signup"
+        android:id="@+id/edt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/background"
+        android:background="@drawable/edt"
         android:inputType="textPassword"
         android:padding="5dp" />
 
@@ -54,15 +54,15 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edtnhaplai_signup"
+        android:id="@+id/edt_comfirmpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background"
+        android:background="@drawable/edt"
         android:inputType="textPassword"
         android:padding="5dp" />
 
     <Button
-        android:id="@+id/btndangky_signup"
+        android:id="@+id/btn_dangky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

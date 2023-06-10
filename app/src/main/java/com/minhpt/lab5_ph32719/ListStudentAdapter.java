@@ -62,6 +62,7 @@ public class ListStudentAdapter extends BaseAdapter implements Filterable {
             public void onClick(View v) {
                 list.remove(position);
                 notifyDataSetChanged();
+                ((Bai2) context).luuListDulieu();
             }
         });
         btn_update.setOnClickListener(new View.OnClickListener() {
