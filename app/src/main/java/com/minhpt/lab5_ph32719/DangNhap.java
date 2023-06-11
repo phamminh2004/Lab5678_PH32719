@@ -76,15 +76,6 @@ public class DangNhap extends AppCompatActivity {
 
         checkRemember();
 
-//        Bundle bundle = getIntent().getExtras();
-//        if (bundle != null) {
-//            username = bundle.getString(DangKy.KEY_USERNAME);
-//            password = bundle.getString(DangKy.KEY_PASSWORD);
-//        }
-//        edt_username.setText(username);
-//        edt_password.setText(password);
-
-
         btn_dangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +86,7 @@ public class DangNhap extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 List<User> list = new ArrayList<>();
-                list = readUser(context, "user.txt");
+                list = readUser(context, "account.txt");
 
                 String name = edt_username.getText().toString();
                 String pass = edt_password.getText().toString();
@@ -107,7 +98,7 @@ public class DangNhap extends AppCompatActivity {
                 } else if (!name.equals(list.get(0).getUsername()) && !pass.equals(list.get(0).getPassword())) {
                     Toast.makeText(DangNhap.this, "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
                 } else {
-                    remember(list.get(0).getUsername(),list.get(0).getPassword(),true);
+                    remember(list.get(0).getUsername(), list.get(0).getPassword(), true);
                     startActivity(new Intent(DangNhap.this, Bai2.class));
                     Toast.makeText(DangNhap.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                 }

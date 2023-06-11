@@ -64,7 +64,7 @@ public class DangKy extends AppCompatActivity {
                     bundle.putString(KEY_USERNAME, username);
                     bundle.putString(KEY_PASSWORD, password);
                     intent.putExtras(bundle);
-                    writeUser(context, "user.txt", new User(edt_username.getText().toString(), edt_password.getText().toString()));
+                    writeUser(context, "account.txt", new User(edt_username.getText().toString(), edt_password.getText().toString()));
                     startActivity(intent);
                 }
             }
